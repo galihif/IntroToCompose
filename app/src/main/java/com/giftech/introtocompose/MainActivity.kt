@@ -9,7 +9,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -54,18 +54,21 @@ fun MyApp() {
 
 @Composable
 fun CreateCircle() {
+    var moneyCounter by remember{
+        mutableStateOf(0)
+    }
     Card(
         modifier = Modifier
             .padding(8.dp)
             .size(145.dp)
             .clickable {
-
+                moneyCounter+=1
             },
         shape = CircleShape,
         elevation = 4.dp
     ) {
         Box(contentAlignment = Alignment.Center) {
-            Text(text = "Tap", modifier = Modifier)
+            Text(text = "Tap $moneyCounter", modifier = Modifier)
         }
     }
 }
